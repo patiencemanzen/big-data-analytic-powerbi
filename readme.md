@@ -450,45 +450,15 @@ Conservative estimates suggest 8-12% revenue increase and 15-20% improvement in 
 The project includes comprehensive visual documentation of the entire development process:
 
 **▪ Data Loading Process**
-
-- **Screenshot_1.png:** Power BI data source connection and import wizard
-- Initial dataset preview showing raw Uber fares data structure
-- Data type detection and column mapping verification
-- Connection settings and refresh configuration
+<img width="1126" height="478" alt="Screenshot_1" src="https://github.com/user-attachments/assets/258b93bf-43e7-443c-a65e-168e4a948a08" />
 
 **▪ Data Cleaning Steps**
-
-- **Screenshot_2.png:** Data transformation and cleaning operations
-- Missing value identification and treatment procedures
-- Outlier detection using statistical methods (IQR-based filtering)
-- Data quality assessment showing before/after comparison
-- Geographic coordinate validation and NYC boundary filtering
-
-**▪ DAX Formulas (Advanced Calculations)**
-
-- **Screenshot_3.png:** Custom DAX measures and calculated columns
-- Key Performance Indicators (KPIs) creation:
-
-  ```dax
-  Average Fare = AVERAGE(UberData[fare_amount])
-  Total Rides = COUNT(UberData[trip_id])
-  Revenue Per Mile = DIVIDE([Total Revenue], [Total Distance])
-  Peak Hour Flag = IF(HOUR(UberData[pickup_datetime]) IN {7,8,17,18,19}, "Peak", "Off-Peak")
-  ```
-
-- Time intelligence functions for temporal analysis
-- Geographic calculations for distance and zone classifications
+<img width="1102" height="602" alt="Screenshot_2" src="https://github.com/user-attachments/assets/7c29e3fc-7ab2-4fbb-9a18-494bd48cfd76" />
+<img width="1234" height="753" alt="Screenshot_3" src="https://github.com/user-attachments/assets/39d37744-7f9c-4749-b06e-2576e1b703d4" />
 
 **▪ Dashboard Development Stages**
+<img width="1919" height="934" alt="Screenshot_5" src="https://github.com/user-attachments/assets/48b1e49f-36c2-41b3-9b39-a327b28f30e2" />
 
-- **Screenshot_4.png:** Progressive dashboard construction phases
-- Initial wireframe and layout planning
-- Visual component selection and configuration
-- Interactive filtering and cross-highlighting setup
-- **Screenshot_5.png:** Final dashboard with complete functionality
-- Performance optimization and user experience refinements
-- Color scheme and branding implementation
-- Mobile responsiveness testing and adjustments
 
 **Development Process Documentation:**
 Each screenshot captures critical stages of the analytical workflow, providing transparency into the methodological approach and enabling reproducibility for future projects or academic review.
