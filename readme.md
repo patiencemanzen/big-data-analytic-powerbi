@@ -46,14 +46,11 @@ This analysis provides valuable insights for ride-sharing companies, urban plann
 - **Python 3.8+** - Primary programming language
 - **Pandas** - Data manipulation and analysis
 - **NumPy** - Numerical computations
-- **GeoPy** - Geographic distance calculations
-- **Matplotlib/Seaborn** - Statistical visualizations
 
 **Business Intelligence & Visualization:**
 
 - **Power BI Desktop** - Interactive dashboard creation
 - **DAX (Data Analysis Expressions)** - Advanced calculations
-- **Power Query** - Data transformation
 
 ### 3. Detailed Data Processing Pipeline
 
@@ -108,23 +105,6 @@ This analysis provides valuable insights for ride-sharing companies, urban plann
 
 **Business Implications:**
 The fare distribution suggests a standardized pricing model with occasional surge pricing events, indicating predictable revenue patterns for operational planning.
-
-### 📌 Distance vs Fare Correlation
-
-**Statistical Analysis:**
-
-- Strong positive correlation coefficient (r = 0.78)
-- Linear relationship: Fare = $2.50 base + $1.85 per mile (approximate)
-- Notable exceptions: Short trips with high fares indicating surge pricing
-- Distance explains ~61% of fare variance (R² = 0.61)
-
-**Anomaly Detection:**
-High-fare short trips typically occur during:
-
-- Peak traffic hours (7-9 AM, 5-7 PM)
-- Severe weather conditions
-- Special events in NYC
-- Airport pickup/dropoff locations
 
 ### 📌 Temporal Pattern Analysis
 
@@ -239,26 +219,6 @@ Revenue Per Mile = DIVIDE([Total Revenue], [Total Distance])
 Peak Hour Flag = IF(HOUR(UberData[pickup_datetime]) IN {7,8,17,18,19}, "Peak", "Off-Peak")
 ```
 
-**Advanced Calculations:**
-
-```dax
-Fare Efficiency = 
-DIVIDE(
-    UberData[fare_amount],
-    UberData[distance_miles],
-    0
-)
-
-Time Period = 
-SWITCH(
-    HOUR(UberData[pickup_datetime]),
-    6, "Early Morning",
-    7, "Morning Rush", 8, "Morning Rush", 9, "Morning Rush",
-    17, "Evening Rush", 18, "Evening Rush", 19, "Evening Rush",
-    "Regular Hours"
-)
-```
-
 ### 📱 Dashboard Performance Optimization
 
 **Technical Implementation:**
@@ -268,81 +228,6 @@ SWITCH(
 - Column store compression reducing file size by 65%
 - Query folding implemented for data refresh efficiency
 - Incremental refresh setup for large dataset handling
-
----
-
-## 💡 Strategic Recommendations & Business Impact
-
-### 🎯 Operational Excellence Initiatives
-
-**1. Dynamic Pricing Optimization**
-
-- **Recommendation:** Implement machine learning-based surge pricing algorithms
-- **Expected Impact:** 12-15% revenue increase during peak hours
-- **Implementation:** Use temporal and geographic patterns identified in analysis
-- **Success Metrics:** Fare efficiency ratio, customer satisfaction scores
-
-**2. Driver Allocation Strategy**
-
-- **Recommendation:** Proactive driver deployment to high-demand zones
-- **Target Areas:** Manhattan Central (45% pickup concentration), Airport corridors
-- **Timing:** Pre-position drivers 30 minutes before predicted demand spikes
-- **Expected Outcome:** 25% reduction in wait times, improved driver utilization
-
-**3. Customer Engagement & Retention**
-
-- **Off-Peak Incentives:** Offer 10-15% discounts during low-demand hours
-- **Loyalty Programs:** Reward frequent riders with fare guarantees
-- **Route Optimization:** Suggest efficient pickup locations to customers
-- **Communication:** Real-time ETA and fare estimates
-
-### 🔮 Predictive Analytics Applications
-
-**Demand Forecasting Model:**
-
-- Utilize temporal patterns for accurate demand prediction
-- Weather integration for surge pricing triggers
-- Event calendar correlation for special occasion planning
-- Supply-demand balancing algorithms
-
-**Revenue Optimization:**
-
-- Price elasticity analysis for optimal fare adjustments
-- Customer segmentation for targeted promotions
-- Geographic expansion opportunities identification
-- Competitive pricing analysis framework
-
-### 🌍 Urban Planning & Policy Implications
-
-**Transportation Infrastructure:**
-
-- Identify underserved areas requiring public transit improvements
-- Support city planning with ride-sharing data insights
-- Advocate for dedicated pickup/dropoff zones in high-density areas
-- Collaborate with municipal authorities on traffic flow optimization
-
-**Environmental Impact:**
-
-- Promote ride-sharing to reduce individual car ownership
-- Support electric vehicle adoption through driver incentives
-- Optimize routing for reduced carbon footprint
-- Measure and report environmental benefits
-
-### 📊 Continuous Improvement Framework
-
-**Data Quality Enhancement:**
-
-- Implement real-time data validation
-- Establish data governance protocols
-- Create automated anomaly detection systems
-- Develop feedback loops for model refinement
-
-**Performance Monitoring:**
-
-- Weekly KPI dashboards for stakeholders
-- Monthly trend analysis reports
-- Quarterly strategy review sessions
-- Annual comprehensive business impact assessment
 
 ---
 
@@ -420,27 +305,10 @@ jupyter>=1.0.0
 ```bash
 # Clone the repository
 git clone https://github.com/patiencemanzen/big-data-analytic-powerbi.git
-cd intro-to-big-data
-
-# Create Python virtual environment
-python -m venv uber_analysis_env
-source uber_analysis_env/bin/activate  # On Windows: uber_analysis_env\Scripts\activate
-
-# Install required packages
-pip install -r requirements.txt
+cd big-data-analytic-powerbi
 ```
 
-**2. Data Processing Pipeline**
-
-```python
-# Run the complete analysis pipeline
-python data_cleaning.py          # Step 1: Clean raw data
-python feature_engineering.py    # Step 2: Create analytical features
-python exploratory_analysis.py   # Step 3: Generate insights
-python export_to_powerbi.py      # Step 4: Prepare for visualization
-```
-
-**3. Power BI Dashboard Setup**
+**1. Power BI Dashboard Setup**
 
 - Open `uber_analysis.pbix` in Power BI Desktop
 - Refresh data connections to point to your local CSV files
@@ -465,25 +333,6 @@ python export_to_powerbi.py      # Step 4: Prepare for visualization
 - **Geographic Analysis:** Coordinate validation and distance calculations
 - **Business Analytics:** Revenue optimization and demand forecasting
 
-### � Academic Context & Evaluation Criteria
-
-**Course Alignment:**
-This project demonstrates comprehensive understanding of big data analytics principles taught in INSY 8413, including:
-
-- Large dataset manipulation and processing
-- Statistical analysis and pattern recognition
-- Business intelligence dashboard development
-- Data-driven decision making frameworks
-- Visual communication of analytical findings
-
-**Assessment Dimensions:**
-
-- **Technical Execution (30%):** Code quality, methodology, accuracy
-- **Analytical Depth (25%):** Insight generation, statistical rigor
-- **Visualization Quality (20%):** Dashboard design, user experience
-- **Business Application (15%):** Practical recommendations, strategic thinking
-- **Documentation (10%):** Clarity, completeness, professionalism
-
 ---
 
 ## 🏆 Project Impact & Future Enhancements
@@ -504,39 +353,7 @@ This project demonstrates comprehensive understanding of big data analytics prin
 - Implemented advanced DAX calculations for business metrics
 - Achieved sub-second dashboard refresh performance
 
-### 🔮 Future Development Roadmap
-
-**Phase 1: Advanced Analytics (Short-term)**
-
-- Machine learning model development for fare prediction
-- Real-time streaming data integration
-- Customer segmentation analysis
-- Competitive benchmarking framework
-
-**Phase 2: Operational Integration (Medium-term)**
-
-- API development for live dashboard updates
-- Mobile-responsive dashboard design
-- Automated reporting and alerting system
-- A/B testing framework for pricing strategies
-
-**Phase 3: Strategic Expansion (Long-term)**
-
-- Multi-city comparative analysis
-- Environmental impact assessment
-- Regulatory compliance reporting
-- Stakeholder-specific dashboard variants
-
 ---
-
-## 👨‍🎓 Academic Submission Details
-
-**Submitted To:** Eric Maniraguha  
-**Course:** INSY 8413 – Introduction to Big Data Analytics  
-**Institution:** African University of Central Africa (AUCA)  
-**Submission Date:** July 2025  
-**Project Duration:** 4 weeks  
-**Team Size:** Individual Project
 
 **Academic Integrity Statement:**
 This project represents original work completed independently, adhering to AUCA's academic integrity policies. All data sources are properly cited, and analytical methodologies follow established best practices in data science and business intelligence.
@@ -552,10 +369,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ```bibtex
 @project{uber_fares_analysis_2025,
   title={Uber Fares Data Analysis: Comprehensive Business Intelligence Dashboard},
-  author={[Your Name]},
+  author={hseal419@gmail.com},
   year={2025},
-  institution={African University of Central Africa},
-  course={INSY 8413 - Introduction to Big Data Analytics},
   url={https://github.com/patiencemanzen/big-data-analytic-powerbi}
 }
 ```
@@ -565,8 +380,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Kaggle community for providing the Uber Fares Dataset
 - Power BI development team for visualization capabilities
 - Python data science community for open-source libraries
-- AUCA faculty for academic guidance and support
-
+  
 ---
 
 *🌟 This project demonstrates the power of data analytics in transforming raw transportation data into actionable business intelligence, showcasing the intersection of technology, analytics, and strategic decision-making in the modern data-driven economy.*
